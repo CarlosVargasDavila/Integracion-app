@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import SideBar from "./components/SideBar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages";
+import RungeKutta3 from "./pages/runge_kutta3";
+import GraficaPage from "./pages/graficaPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<SideBar/>}>
+          <Route path="/" element = {<Index/>}/>
+          <Route path="/grafica" element={<GraficaPage/>}/>
+          <Route path="/runge-kutta-3" element={<RungeKutta3/>}/>
+        </Route>
+       
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.sidebar{
+    display: flex;
+    overflow-y: hidden;
+}
+.left-side{
+    width: 160px;
+    height: 100vh;
+    background-color: rgba(21, 19, 87, 1);
+    padding-right: 20px;
+    position: fixed;
+}
+.left-side .logo-app{
+    width: 55px;
+}
+.left-side .texto-metodos-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.left-side .texto-metodos-container .texto-metodos{
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+    font-size: 25px;
+}
+
+.left-side .sidebar-container{
+    display: flex;
+    align-items: center;
+    height: 70%;
+    justify-content: center;
+}
+
+.left-side .sidebar-container .opciones-sidebar button{
+    width: 120px;
+    height: 32px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+}
+.left-side .sidebar-container .opciones-sidebar button .contenido-boton{
+    color: black;
+    text-decoration: none;
+    
+}
+
+.left-side .sidebar-container .opciones-sidebar button .icono{
+    color: gray;
+    padding-right: 5px;
+
+}
+.right-side{
+    width: 100%;
+    overflow-y: auto;
+    margin-left: 180px;
+}
+.right-side .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 46px;
+    background-color: #E9EDF5;
+}
+
+.right-side .navbar p{
+    color: black;
+    font-size: 24;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    padding-left: 10px;
+}
+
+.right-side .navbar .right-side-navbar .question-mark{
+    font-size: 34px;
+    padding-right: 10px;
+    color: #868FA0;
+}
+.right-side .navbar .right-side-navbar {
+    padding-right: 20px;
+}
+
+
+
+
+

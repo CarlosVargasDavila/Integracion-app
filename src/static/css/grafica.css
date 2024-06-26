@@ -1,0 +1,14 @@
+.regresar-container{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+.btn-regresar{
+    background-color: #5E5ADB;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}

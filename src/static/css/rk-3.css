@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+.metodo-container{
+    height: 100vh;
+    width: 100%;
+}
+.metodo-container .titulo{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.metodo-container .titulo p{
+    color: black;
+    font-size: 24px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+}
+.metodo-container .cuerpo{
+    display: flex;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.metodo-container .cuerpo .input-side{
+    width: 20%
+}
+.metodo-container .cuerpo .input-side .input-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.metodo-container .cuerpo .input-side .input-container label{
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    color: black;
+    font-size: 24px;
+}
+.metodo-container .cuerpo .input-side .input-container .input{
+    background: linear-gradient(#F5F5F5, #8F8F8F);
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding-left: 2px;
+}
+.metodo-container .cuerpo .table-side{
+    width: 80%;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+.metodo-container .cuerpo .table-side .table-container{
+    height: 50vh;
+    width: 90%;
+    overflow-x: auto;
+    overflow-x: auto;
+}
+.metodo-container .cuerpo .table-side p{
+    color: black;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.metodo-container .cuerpo .table-side .botones-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+.metodo-container .cuerpo .table-side .botones-container button{
+    background-color: #5E5ADB;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.metodo-container .cuerpo .table-side .btn-calcular{
+    background-color: #5E5ADB;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+thead {
+    background-color: #f4f4f4;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+td {
+    background-color: #ffffff;
+}
+table{
+    border-collapse: collapse;
+}
