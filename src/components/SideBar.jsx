@@ -16,8 +16,7 @@ const SideBar = () => {
 
                 <div className="sidebar-container">
                     <div className="opciones-sidebar">
-                        <button><Link to="/euler" className="contenido-boton"><RxPlus className="icono"/>Euler</Link></button>
-                        <button><Link to="/euler_mejorado" className="contenido-boton"><RxPlus className="icono"/>Euler Mejorado</Link></button>
+                        <button><Link to="/trapecio" className="contenido-boton"><RxPlus className="icono"/>Trapecio</Link></button>
                         <button><Link to="/runge-kutta-3" className="contenido-boton"><RxPlus className="icono"/>Runge Kutta 3</Link></button>
                         <button><Link to="/interpolacion-newton" className="contenido-boton"><RxPlus className="icono"/>Interpolacion de Newton</Link></button>
                     </div>

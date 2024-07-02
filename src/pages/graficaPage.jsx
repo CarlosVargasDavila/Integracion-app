@@ -7,12 +7,8 @@ const GraficaPage = () => {
     const {tabla} = location.state
     const navigate = useNavigate()
     const datosEjey = tabla.map(dato => {
-        return dato[3]
+        return dato[2]
     })
-    console.log(tabla.map(dato => {
-        return dato[3]
-    }))
-
     const datosEjeX = tabla.map(dato => {
         return dato[1]
     })

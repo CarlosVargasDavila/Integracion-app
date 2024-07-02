@@ -5,10 +5,11 @@ import { RxPlus } from "react-icons/rx";
 const InterpolacionNewton= ()=>
 {
     const [grado, setGrado] = useState('')
-    const cantidad = Array.from({ length: grado.length>0?grado*2+2:0 }, (_, index) => index + 1);
+    const cantidad = Array.from({ length: grado.length > 0 ? grado * 2 + 2 : 0 }, (_, index) => index + 1);
     const [xi,setXi]=useState([])
     const [fxi,setFxi]=useState([])
     const [table, setTable]=useState([])
+    const [coeficientes, setCoeficientes] = useState([])
     
     const CalcularInterPolin = async() => {
         try
@@ -18,11 +19,12 @@ const InterpolacionNewton= ()=>
                xi,
                fxi
             }
-            console.log(data)
             const respuesta = await ObtenerDatosInterPoli(data)
+            console.log(respuesta)
             if (respuesta.data.success)
             {
                setTable(respuesta.data.tabla)
+               setCoeficientes(respuesta.data.coeficientes)
 
             }
             else
@@ -50,14 +52,7 @@ const InterpolacionNewton= ()=>
         }
     };
 
-    const renderCell = (indexFila, indexColumna, columna) => {
-        const numCols = [4, 4, 4, 3, 2, 1]; // Número de columnas que deben tener las filas
-        return (
-          <td key={`${indexFila}-${indexColumna}`} rowSpan={numCols[indexFila] || 1}>
-            {columna}
-          </td>
-        );
-      };
+
     return(
         <div className="metodo-container">
             <div className="titulo">
@@ -78,7 +73,7 @@ const InterpolacionNewton= ()=>
                     {cantidad.length > 0  ? 
                     cantidad.map((i, index) => {
                         return (
-                        <div className="input-container">    
+                        <div className="input-container" key={index}>    
                             <label >{index%2===0?'xi':'f(xi)'}</label>
                             <input
                             type= 'text' className ='input'
@@ -106,7 +101,7 @@ const InterpolacionNewton= ()=>
                                 </tr>
                             </thead>
                             <tbody>
-                            {table[0].map((item, index) => (
+                            {table.length > 0 && (table[0].map((item, index) => (
                                 <tr key={index}>
                                 <td>{table[0][index]}</td>
                                 <td>{table[1][index]}</td>
@@ -115,11 +110,20 @@ const InterpolacionNewton= ()=>
                                 <td>{table[4][index]}</td>
                                 <td>{table[5][index]}</td>
                                 </tr>
-                            ))}
+                            )))}
                                    
                             </tbody>
                             </table>
-                           
+                           <div>
+                                <p>Valores de los coeficientes</p>
+                                {coeficientes.length > 0 &&(
+                                    coeficientes.map((coeficiente, index) => {
+                                        return (
+                                        <p key={index}>a{index} = {coeficiente}</p>
+                                        )
+                                    })
+                                )}
+                           </div>
                             </div>
                             <button className='btn-calcular' onClick={CalcularInterPolin}><RxPlus/>Calcular</button>
                 </div>

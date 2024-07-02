@@ -4,6 +4,7 @@ import Index from "./pages";
 import RungeKutta3 from "./pages/runge_kutta3";
 import GraficaPage from "./pages/graficaPage";
 import InterpolacionNewton from "./pages/InterpolacionNewton";
+import Trapecio from "./pages/trapecio";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/grafica" element={<GraficaPage/>}/>
           <Route path="/runge-kutta-3" element={<RungeKutta3/>}/>
           <Route path="/interpolacion-newton" element={<InterpolacionNewton/>}/>
+          <Route path="/trapecio" element={<Trapecio/>}/>
 
         </Route>
        
