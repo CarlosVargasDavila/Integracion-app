@@ -5,14 +5,17 @@ import "../static/css/grafica.css"
 const GraficaPage = () => {
     const location = useLocation()
     const {tabla} = location.state
+    const {grado} = location.state
+    const tabla_iterar = grado ? Array.from({ length: grado  }, (_, index) => index + 1) : null
     const navigate = useNavigate()
-    const datosEjey = tabla.map(dato => {
+    console.log(tabla_iterar)
+    const datosEjey = !grado ? tabla.map(dato => {
         return dato[2]
-    })
-    const datosEjeX = tabla.map(dato => {
-        return dato[1]
-    })
+    }) :  tabla_iterar.map((dato, index) => tabla[2][index]);
 
+    const datosEjeX = !grado ? tabla.map(dato => {
+        return dato[1]
+    }) : tabla_iterar.map((dato, index) => tabla[1][index]);
     const regresar = () => {
         navigate(-1)
     

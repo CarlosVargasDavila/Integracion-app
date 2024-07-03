@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ObtenerDatosInterPoli from "../api/Inter-Polin";
 import { RxPlus } from "react-icons/rx";
+import { useNavigate } from 'react-router-dom';
 
 const InterpolacionNewton= ()=>
 {
@@ -10,7 +11,7 @@ const InterpolacionNewton= ()=>
     const [fxi,setFxi]=useState([])
     const [table, setTable]=useState([])
     const [coeficientes, setCoeficientes] = useState([])
-    
+    const navigate = useNavigate()
     const CalcularInterPolin = async() => {
         try
         {
@@ -38,6 +39,13 @@ const InterpolacionNewton= ()=>
             alert(e.response ? e.response.data.message : e.message)
         }
     }
+    const limpiarDatos = ()=> {
+        setGrado("")
+        setXi("")
+        setFxi("")
+        setTable("")
+        setCoeficientes("")
+    }
 
     const handleChange = (index, value) => {
         const newXi = [...xi];
@@ -51,7 +59,9 @@ const InterpolacionNewton= ()=>
             setFxi(newFxi);
         }
     };
-
+    const graficar = () =>{
+        navigate('/grafica',{state:{tabla:table, grado: parseInt(grado) + 1}})
+    }
 
     return(
         <div className="metodo-container">
@@ -125,6 +135,11 @@ const InterpolacionNewton= ()=>
                                 )}
                            </div>
                             </div>
+
+                            <div className="botones-container">
+                        <button onClick={limpiarDatos}><RxPlus/>Limpiar</button>
+                        <button onClick={graficar}><RxPlus/>Generar grafica</button>
+                    </div>
                             <button className='btn-calcular' onClick={CalcularInterPolin}><RxPlus/>Calcular</button>
                 </div>
 
