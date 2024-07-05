@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Integracion-app/static/css/main.c56b0e43.css",
+    "main.js": "/Integracion-app/static/js/main.5933200f.js",
+    "static/media/Inicio.jpeg": "/Integracion-app/static/media/Inicio.b4fbd506a482a552885d.jpeg",
+    "index.html": "/Integracion-app/index.html",
+    "main.c56b0e43.css.map": "/Integracion-app/static/css/main.c56b0e43.css.map",
+    "main.5933200f.js.map": "/Integracion-app/static/js/main.5933200f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c56b0e43.css",
+    "static/js/main.5933200f.js"
+  ]
+}
