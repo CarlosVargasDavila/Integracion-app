@@ -2,6 +2,9 @@ import ObtenerDatosTrapecio from "../api/trapecio"
 import { RxPlus } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Trapecio = () => {
     const [funcion, setFuncion] = useState("")
@@ -11,8 +14,12 @@ const Trapecio = () => {
     const [h, setH] = useState("")
     const [tabla, setTabla] = useState([])
     const [integral, setIntegral] = useState("")
+    const [error, setError] = useState(null)
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate()
     const CalcularTrapecio = async() => {
+        setError(null)
+        setOpen(true)
         try
         {
             const data = {
@@ -27,16 +34,18 @@ const Trapecio = () => {
                 setH(respuesta.data.h)
                 setTabla(respuesta.data.tabla)
                 setIntegral(respuesta.data.integral)
+                setOpen(false)
             }
             else
             {
-                alert(respuesta.data.message)
+                setOpen(false)
+                setError(respuesta.data.message)
             }
         }
         catch(e)
         {
-            console.log(e)
-            alert(e.response ? e.response.data.message : e.message)
+            setOpen(false)
+            setError(e.response ? e.response.data.message : e.message)
         }
     }
 
@@ -55,9 +64,18 @@ const Trapecio = () => {
     }
      return (
         <div className="metodo-container">
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <div className="titulo">
                 <p>Método del Trapecio</p>
             </div>
+            {error && (
+                <Alert severity="error">{error}</Alert>
+            )}
             <div className="cuerpo">
                 <div className="input-side">
                     <div className="input-container">

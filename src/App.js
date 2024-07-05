@@ -5,6 +5,7 @@ import RungeKutta3 from "./pages/runge_kutta3";
 import GraficaPage from "./pages/graficaPage";
 import InterpolacionNewton from "./pages/InterpolacionNewton";
 import Trapecio from "./pages/trapecio";
+import NotFound from "./pages/notFound";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/runge-kutta-3" element={<RungeKutta3/>}/>
           <Route path="/interpolacion-newton" element={<InterpolacionNewton/>}/>
           <Route path="/trapecio" element={<Trapecio/>}/>
-
+          <Route path="*" element={<NotFound/>}/>
         </Route>
        
       </Routes>

@@ -3,6 +3,10 @@ import ObtenerDatosRk3 from '../api/rk-3';
 import '../static/css/rk-3.css'
 import { RxPlus } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 const RungeKutta3 = () => {
     const [funcion, setFuncion] = useState("")
     const [x0, setX0] = useState("")
@@ -11,8 +15,12 @@ const RungeKutta3 = () => {
     const [n, setN] = useState("")
     const [h, setH] = useState("")
     const [tabla, setTabla] = useState([])
+    const [error, setError] = useState(null)
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate()
     const CalcularRk3 = async() => {
+        setError(null)
+        setOpen(true)
         try
         {
             const data = {
@@ -27,17 +35,18 @@ const RungeKutta3 = () => {
             {
                 setH(respuesta.data.h)
                 setTabla(respuesta.data.tabla)
-
+                setOpen(false)
             }
             else
             {
-                alert(respuesta.data.message)
+                setOpen(false)
+                setError(respuesta.data.message)
             }
         }
         catch(e)
         {
-            console.log(e)
-            alert(e.response ? e.response.data.message : e.message)
+            setOpen(false)
+            setError(e.response ? e.response.data.message : e.message)
         }
     }
 
@@ -56,9 +65,18 @@ const RungeKutta3 = () => {
     }
      return (
         <div className="metodo-container">
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <div className="titulo">
                 <p>Método de Runge Kutta 3</p>
             </div>
+            {error && (
+                <Alert severity="error">{error}</Alert>
+            )}
             <div className="cuerpo">
                 <div className="input-side">
                     <div className="input-container">

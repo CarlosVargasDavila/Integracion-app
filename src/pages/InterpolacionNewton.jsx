@@ -2,6 +2,9 @@ import { useState } from "react"
 import ObtenerDatosInterPoli from "../api/Inter-Polin";
 import { RxPlus } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const InterpolacionNewton= ()=>
 {
@@ -11,8 +14,13 @@ const InterpolacionNewton= ()=>
     const [fxi,setFxi]=useState([])
     const [table, setTable]=useState([])
     const [coeficientes, setCoeficientes] = useState([])
+    const [polinomio, setPolinomio] = useState("")
+    const [error, setError] = useState(null)
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate()
     const CalcularInterPolin = async() => {
+        setError(null)
+        setOpen(true)
         try
         {
             const data = {
@@ -26,17 +34,20 @@ const InterpolacionNewton= ()=>
             {
                setTable(respuesta.data.tabla)
                setCoeficientes(respuesta.data.coeficientes)
+               setPolinomio(respuesta.data.polinomio)
+               setOpen(false)
 
             }
             else
             {
-                alert(respuesta.data.message)
+                setError(respuesta.data.message)
+                setOpen(false)
             }
         }
         catch(e)
         {
-            console.log(e)
-            alert(e.response ? e.response.data.message : e.message)
+            setOpen(false)
+            setError(e.response ? e.response.data.message : e.message)
         }
     }
     const limpiarDatos = ()=> {
@@ -45,6 +56,7 @@ const InterpolacionNewton= ()=>
         setFxi("")
         setTable("")
         setCoeficientes("")
+        setPolinomio("")
     }
 
     const handleChange = (index, value) => {
@@ -65,9 +77,18 @@ const InterpolacionNewton= ()=>
 
     return(
         <div className="metodo-container">
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <div className="titulo">
                 <p>Método de Interpolación de Newton</p>
             </div>
+            {error && (
+                <Alert severity="error">{error}</Alert>
+            )}
             <div className="cuerpo">
                 <div className="input-side">
                     <div className="input-container">
@@ -119,6 +140,7 @@ const InterpolacionNewton= ()=>
                                 <td>{table[3][index]}</td>
                                 <td>{table[4][index]}</td>
                                 <td>{table[5][index]}</td>
+           
                                 </tr>
                             )))}
                                    
@@ -133,6 +155,7 @@ const InterpolacionNewton= ()=>
                                         )
                                     })
                                 )}
+                                <p>Ecuacion: {polinomio}</p>
                            </div>
                             </div>
 

@@ -1,7 +1,7 @@
 import axios from "axios";
-
+import APIURL from "./apiURL";
 const ObtenerDatosTrapecio = (data) => axios.post(
-    "http://localhost:8000/api/v1/metodos/metodo-trapecio",
+    APIURL + "metodos/metodo-trapecio",
     data
 )
 
